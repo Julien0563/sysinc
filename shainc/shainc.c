@@ -58,7 +58,7 @@ static void sha256_transform(uint32_t state[8], const uint8_t chunk[64])
 		       ((uint32_t) chunk[t * 4 + 3]);
 	}
 	for (t = 16; t < 64; t++) {
-	    w[t] = SSIG1(w[t - 2]) + w[t - 7] + SSIG0(w[t - 15]) + w[t -16];
+	    w[t] = SSIG1(w[t - 2]) + w[t - 7] + SSIG0(w[t - 15]) + w[t - 16];
 	}
 
 	a = state[0]; b = state[1]; c = state[2]; d = state[3];
