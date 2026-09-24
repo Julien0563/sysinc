@@ -7,8 +7,8 @@
 typedef unsigned char uint8_t;
 typedef unsigned int uint32_t;
 
-/* round constants */
-/* network endian */
+/* this is the round constants */
+/* this is the network endian */
 static const uint32_t k[64] = {
     0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,
     0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
@@ -28,8 +28,8 @@ static const uint32_t k[64] = {
     0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
 };
 
-/* initial hash values (h_0) */
-/* network endian */
+/* this will initial the hash values (h_0) */
+/* this is the network endian */
 static const uint32_t h0[8] = {
     0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,
     0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19
@@ -43,7 +43,7 @@ static const uint32_t h0[8] = {
 #define SSIG0(x) (ROTR((x), 7) ^ ROTR((x), 18) ^ ((x) >> 3))
 #define SSIG1(x) (ROTR((x), 17) ^ ROTR((x), 19) ^ ((x) >> 10))
 
-/*process one 64 byte chunk, updating the 8 word running state*/
+/*process one 64 byte chunk and updating the 8 word running state*/
 static void sha256_transform(uint32_t state[8], const uint8_t chunk[64])
 {
 	uint32_t w[64];
@@ -81,7 +81,7 @@ static void sha256_transform(uint32_t state[8], const uint8_t chunk[64])
 	state[4] += e; state[5] += f; state[6] += g; state[7] += hh;
 }
 
-/* read an entire file into a malloc'd buffer; caller frees it */
+/* this will read an entire file into a malloc'd buffer; caller frees it */
 static uint8_t *read_file(const char *filename, unsigned long *out_len)
 {	
     FILE *fp;
@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
     }
 
     /* pad so that (msg + 0x80 + zeros) is 56 bytes short of a 64-byte
-       boundary, then append the 8-byte big-endian bit length */
+       boundary and then append the 8-byte big-endian bit length */
     rem = (msg_len + 1) % 64;
     if (rem <= 56) {
 	zero_pad = 56 - rem;
