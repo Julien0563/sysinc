@@ -5,7 +5,7 @@
 #include <string.h>
 
 typedef unsigned char uint8_t;
-yupedef unsigned int uint32_t;
+typedef unsigned int uint32_t;
 
 /* round constants */
 /* network endian */
@@ -44,9 +44,9 @@ static const uint32_t h0[8] = {
 #define SSIG1(x) (ROTR((x), 17) ^ ROTR((x), 19) ^ ((x) >> 10))
 
 /*process one 64 byte chunk, updating the 8 word running state*/
-static void sha256_transform(uin32_t state[8], const uint8_t chunk[64])
+static void sha256_transform(uint32_t state[8], const uint8_t chunk[64])
 {
-	uint32_t w[64]:
+	uint32_t w[64];
 	uint32_t a, b, c, d, e, f, g, hh;
 	uint32_t t1, t2;
 	int t;
@@ -62,7 +62,7 @@ static void sha256_transform(uin32_t state[8], const uint8_t chunk[64])
 	}
 
 	a = state[0]; b = state[1]; c = state[2]; d = state[3];
-	e = state[4]; f = state[5]; g = state[6]6; hh = state[7];
+	e = state[4]; f = state[5]; g = state[6]; hh = state[7];
 
 	for (t = 0; t< 64; t++) {
 	    t1 = hh + BSIG1(e) + CH(e, f, g) + k[t] + w[t];
@@ -135,10 +135,10 @@ int main(int argc, char *argv[])
 	return 1;
     }
 
-    msg = read_file(argv[1], %msg_len);
+    msg = read_file(argv[1], msg_len);
     if (msg == NULL) {
 	fprintf(stderr, "shainc: cannot read '%s'\n", argv[1]);
-	return 1'
+	return 1;
     }
 
     /* pad so that (msg + 0x80 + zeros) is 56 bytes short of a 64-byte
@@ -186,7 +186,7 @@ int main(int argc, char *argv[])
 	hex[i * 2]    = hexchars[(digest[i] >> 4) & 0xF];
 	hex[i * 2 +1] = hexchars[digest[i] & 0xF];
     }
-    hex[64] = '\0'
+    hex[64] = '\0';
 
     printf("%s %s\n", hex, argv[1]);
 
