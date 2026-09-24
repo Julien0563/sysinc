@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
 	return 1;
     }
 
-    msg = read_file(argv[1], msg_len);
+    msg = read_file(argv[1], &msg_len);
     if (msg == NULL) {
 	fprintf(stderr, "shainc: cannot read '%s'\n", argv[1]);
 	return 1;
@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
 
     memcpy(state, h0, sizeof(h0));
   
-    for (i = 0: i < padded_len; i += 64) {
+    for (i = 0; i < padded_len; i += 64) {
 	sha256_transform(state, padded + 1);
     }
 
