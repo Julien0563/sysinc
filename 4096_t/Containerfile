@@ -1,0 +1,9 @@
+FROM alpine
+
+RUN apk add build-base gcc curl python3
+
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/4096_t/4096_t.h -o 4096_t.h
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/4096_t/tester.c -o tester.c
+RUN curl https://raw.githubusercontent.com/cd-c89/sysinc/refs/heads/main/4096_t/tester.py -o tester.py
+
+COPY 4096_t.c .
