@@ -26,7 +26,7 @@ uint64_t bigsub(uint64_t *min, uint64_t *sub, uint64_t *dif) {
     return borrow;
 }
 
-/* ---- BigMul: 32-bit-limb schoolbook multiplication ---- */
+
 uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
     uint32_t *a = (uint32_t *)in0;
     uint32_t *b = (uint32_t *)in1;
@@ -60,7 +60,7 @@ uint64_t bigmul(uint64_t *in0, uint64_t *in1, uint64_t *out) {
     return 0;
 }
 
-/* ---- Division helpers (internal) ---- */
+
 static int bigcmp(uint64_t *a, uint64_t *b) {
     size_t i = S;
     while (i--) {
@@ -105,7 +105,7 @@ static void bigdivmod(uint64_t *num, uint64_t *den, uint64_t *quo, uint64_t *rem
     }
 }
 
-/* ---- BigQuo / BigRem ---- */
+
 uint64_t bigquo(uint64_t *num, uint64_t *den, uint64_t *quo) {
     uint64_t rem[S];
     bigdivmod(num, den, quo, rem);
