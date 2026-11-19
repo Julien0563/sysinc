@@ -3,5 +3,5 @@
 4096_t/tester.py
 tester
 *.dSYM/
-dijkstra
-dijkstra_asan
+dijkstra/dijkstra
+dijkstra/dijkstra_asan
