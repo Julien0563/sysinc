@@ -1,3 +1,6 @@
+.DS_Store
+4096_t/tester.c
+4096_t/tester.py
 tester
 *.dSYM/
 dijkstra
